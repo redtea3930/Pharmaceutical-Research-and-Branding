@@ -22,8 +22,14 @@ Develop an analysis based on the collected data from research articles and senti
 -Adderall sentiment higher among women than men across most ages by about 5%, and by far highest among women over the afe of 75 at 75%. Sentiment is next highest for 3-6 year old males at 65%. Sentiment is lowest for females 3-6 years old at below 40%.
 
 ## Branding and Marketing Materials
+
+### Name generation
 Several drug names were generated with a simple [ChatGPT prompt](https://chat.openai.com/share/8bb12d75-cbf4-47cc-aea6-dadceaacebd8):
->"I'm working on a project imagining new ways to market Adderall.  My research shows that Adderall has highest customer satisfaction among women over 75, and that there are concerns about the legitimacy of online pharmacies selling Adderall. I want a drug name that conveys a sense of reliability and safety,  conveys staying focused for enjoying time with ones family, and would appeal to women over 75.  Can you give me 10 ideas for this name?"
+>Prompt:
+>
+>I'm working on a project imagining new ways to market Adderall.  My research shows that Adderall has highest customer satisfaction among women over 75, and that there are concerns about the legitimacy of online pharmacies selling Adderall. I want a drug name that conveys a sense of reliability and safety,  conveys staying focused for enjoying time with ones family, and would appeal to women over 75.  Can you give me 10 ideas for this name?"
+>
+>ChatGPT:
 >
 >It's important to note that promoting the marketing of prescription medications involves ethical considerations, and it's crucial to adhere to regulations and guidelines set by health authorities. Additionally, creating a new drug name would fall under the purview of pharmaceutical research and development, which should be conducted by professionals in the field.
 >
@@ -45,8 +51,52 @@ Several drug names were generated with a simple [ChatGPT prompt](https://chat.op
 >
 >8. TranquilFocus
 >
->WiseMinder
+>9. WiseMinder
 >
->HeartfulClarity
+>10. HeartfulClarity
 >
 >Please remember that these names are entirely fictional, and if you are working on a real project, it's crucial to consult with professionals in the pharmaceutical and marketing fields to ensure ethical and legal practices."
+
+For the purposes of this project, I chose "Serenitall" as a working name.
+
+### Logo Generation
+
+For image creation from text inputs, I used Segmind's [SSD-1B](https://huggingface.co/segmind/SSD-1B).
+In their words, " The Segmind Stable Diffusion Model (SSD-1B) is a distilled 50% smaller version of the Stable Diffusion XL (SDXL), offering a 60% speedup while maintaining high-quality text-to-image generation capabilities."
+
+I imported this model into a Google Colab notebook to have access to greater processing power and to not interfere with my local Conda environments with the several library installations and downgrades required. This notebook is saved here as [image_generation.ipynb](image_generation.ipynb). I mounted this notebook to my Google Drive and saved output images to temporary storage before manually downloading and installing them in my local repository.
+
+I created a logo of sorts with the following prompt:
+~~~
+prompt = "A blue oval, containing pink letters 'STL', surrounded by a white background. 1990's aesthetic" 
+neg_prompt = "complex, 3D" 
+~~~
+#### Generated Logo
+![Serenitall Logo](Output/serenitall_logo.png)
+
+### Marketing images
+I again used SSD-1B to generate several images for potential use in marketing:
+
+#### Image 1
+~~~
+prompt = "a wood paneled cozy room, an older woman with dark hair playing cards with friends " # Your prompt here
+neg_prompt = "sad, dark" # Negative prompt here
+image1 = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
+~~~
+![serenitall_marketing_1](Output/serenitall_marketing_1.png)
+
+#### Image 2
+~~~
+prompt = "Grandmother at small table with child in her lap, sunny shining in the window" # Your prompt here
+neg_prompt = "sad, dark" # Negative prompt here
+image2 = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
+~~~
+![serenitall_marketing_2](Output/serenitall_marketing_2.png)
+
+#### Image 3
+~~~
+prompt = "family seated around dinner table, grandmother and grandfather in center of image, snowy day outside window" # Your prompt here
+neg_prompt = "sad" 
+image3 = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
+~~~
+![serenitall_marketing_3](Output/serenitall_marketing_3.png)
