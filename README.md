@@ -1,29 +1,32 @@
 # Pharmacuetical-Research-and-Branding
 
 ## Introduction
-This project analyzes medical journal articles and WebMD drug reviews of Adderall to inform potential marketing opportunities. Techniques and tools used include:
-- text summarization with a transformer model, T5
-- text sentiment analysis with a BERT based model, LiYuan Amazon Review Sentiment Analysis
+This project analyzes medical journal articles and WebMD drug reviews of Adderall to inform potential marketing opportunities. Several machine learning models from OpenAI and huggingface were used: 
+- text summarization with a transformer model
+- text sentiment analysis with a BERT based model
 - text generation with ChatGPT
-- text-to-image generation with a Stable Diffusion model, SSD-1B
+- text-to-image generation with a Stable Diffusion model
+
+Source files are stored in Resources:
+- Two pdf's of medical journal articles concerning Adderall:
+    - [Penley et al. Characteristics of online pharmacies selling Adderall. JAPHA 61 (2021) e103-e109](Resources/pubmed.pdf)
+    - [Moran et al. Psychosis with Methylphenidate
+or Amphetamine in Patients with ADHD. N Engl J Med 2019; 380: 1128-38](Resources/pubmed2.pdf)
+- One csv of WebMD drug reviews:
+    - [adderall.csv](Resources/adderall.csv)
+
 
 ## Summarization of PubMed medical journal articles
 Two provided medical jornal articles relating to amphetamine were summarized using the transformer model [T5](https://huggingface.co/docs/transformers/model_doc/t5) from huggingface. One instance of output summary text is stored here: [Pubmed_Summaries](Output/Pubmed_Summaries.txt)
 
-## Sentiment Analysis of patient reviews
+## Sentiment Analysis of Drug Reviews
 500 drug reviews from WebMD were processed with [LiYuan Amazon Review Sentiment Analysis](https://huggingface.co/LiYuan/amazon-review-sentiment-analysis) from huggingface. This model is based on Amazon product reviews and can return a score based on Amazon's five-star system. These drug reviews were then grouped by age and sex and mean sentiment scores were taken for sexed age-range category:
 
 ![Adderall Sentiment by Age and Sex](Output/Adderall_Sentiment_by_Age_and_Sex.png)
 
 ## Analysis
-Develop an analysis based on the collected data from research articles and sentiment scores. Identify strengths, weaknesses, patterns, opportunities, and threats concerning the drug's perception and market potential.
 
--of 62 online pharmacies examines, 92% were'rogue' ie sold drugs without valid prescription, many falsely claimed accreditation.
--the beSafeRx campaign of the food and drug administration (FDA) and the Buy Safe Rx campaign (ASOP) empower consumers by raising awareness of the dangers of purchasing medications
--amphetamine drugs have been associated with development of psychosis.
-
-
--Adderall sentiment higher among women than men across most ages by about 5%, and by far highest among women over the afe of 75 at 75%. Sentiment is next highest for 3-6 year old males at 65%. Sentiment is lowest for females 3-6 years old at below 40%.
+The generated summary describes that many online pharmacies sell Adderall without valid prescriptions, and that amphetamine-based drugs may induce dependence. Sentiment analysis of reviews of Adderall show highest sentiment among women over 75 years old. Based on this information, my marketing strategy is to focus on the most satisfied customers, who also have the least to worry about dependency and who are likely to be less familiar with using online pharmacy sites.
 
 ## Branding and Marketing Materials
 
@@ -83,24 +86,21 @@ I again used SSD-1B to generate several images for potential use in marketing:
 
 #### Image 1
 ~~~
-prompt = "a wood paneled cozy room, an older woman with dark hair playing cards with friends " # Your prompt here
-neg_prompt = "sad, dark" # Negative prompt here
-image1 = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
+prompt = "a wood paneled cozy room, an older woman with dark hair playing cards with friends "
+neg_prompt = "sad, dark"
 ~~~
 ![serenitall_marketing_1](Output/serenitall_marketing_1.png)
 
 #### Image 2
 ~~~
-prompt = "Grandmother at small table with child in her lap, sunny shining in the window" # Your prompt here
-neg_prompt = "sad, dark" # Negative prompt here
-image2 = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
+prompt = "Grandmother at small table with child in her lap, sunny shining in the window"
+neg_prompt = "sad, dark"
 ~~~
 ![serenitall_marketing_2](Output/serenitall_marketing_2.png)
 
 #### Image 3
 ~~~
-prompt = "family seated around dinner table, grandmother and grandfather in center of image, snowy day outside window" # Your prompt here
+prompt = "family seated around dinner table, grandmother and grandfather in center of image, snowy day outside window"
 neg_prompt = "sad" 
-image3 = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
 ~~~
 ![serenitall_marketing_3](Output/serenitall_marketing_3.png)
