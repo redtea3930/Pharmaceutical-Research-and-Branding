@@ -1,7 +1,11 @@
 # Pharmacuetical-Research-and-Branding
 
 ## Introduction
-This project analyzes medical journal articles and WebMD drug reviews of Adderall to inform potential marketing opportunities. 
+This project analyzes medical journal articles and WebMD drug reviews of Adderall to inform potential marketing opportunities. Techniques and tools used include:
+- text summarization with a transformer model, T5
+- text sentiment analysis with a BERT based model, LiYuan Amazon Review Sentiment Analysis
+- text generation with ChatGPT
+- text-to-image generation with a Stable Diffusion model, SSD-1B
 
 ## Summarization of PubMed medical journal articles
 Two provided medical jornal articles relating to amphetamine were summarized using the transformer model [T5](https://huggingface.co/docs/transformers/model_doc/t5) from huggingface. One instance of output summary text is stored here: [Pubmed_Summaries](Output/Pubmed_Summaries.txt)
